@@ -2,6 +2,8 @@ using Intranet.Infra.Data.Interfaces;
 using Intranet.Infra.Data.Contex;
 using Intranet.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Intranet.Application.Interfaces;
+using Intranet.Application.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,19 @@ var connectionString = builder.Configuration.GetConnectionString("ApiConnection"
 builder.Services.AddDbContext<ApiContext>(Options => {
                       Options.UseSqlServer(connectionString, dbOpts => dbOpts.MigrationsAssembly(typeof(Program).Assembly.FullName));
                    });
+builder.Services.AddScoped<IAgendaRepository, AgendaRepository>();    
+builder.Services.AddScoped<IAgendaService, AgendaService>();       
+
+builder.Services.AddCors(
+    options => {
+        options.AddPolicy("cors",builder => {
+            builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        });
+    }
+);
 
 var app = builder.Build();
 
@@ -35,6 +50,6 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers().AllowAnonymous();
 
 app.Run();

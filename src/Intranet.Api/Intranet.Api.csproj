@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers/" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="../Intranet.Application/Intranet.Application.csproj" />
     <ProjectReference Include="../Intranet.Infra.Data/Intranet.Infra.Data.csproj" />
   </ItemGroup>
