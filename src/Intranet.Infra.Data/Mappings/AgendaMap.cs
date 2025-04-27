@@ -9,7 +9,7 @@ public class AgendaMap : IEntityTypeConfiguration<Agenda>
 {
     public void Configure(EntityTypeBuilder<Agenda> builder)
     {
-         builder.ToTable("Agenda");
+         builder.ToTable("Eventos");
 
         builder.HasKey(x => x.Id);
         
