@@ -25,4 +25,6 @@ public class AgendaCadastro
     [Required(ErrorMessage = "{0}: É obrigatório")]
     [StringLength(250,ErrorMessage = "{0}: Maximo de 250 caracteres")]
     public required string Descricao { get; set; }
+
+    public bool Status { get; set; }
 }

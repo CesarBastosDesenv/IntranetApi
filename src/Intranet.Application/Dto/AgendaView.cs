@@ -13,4 +13,6 @@ public class AgendaView
 
     public required string Local { get; set; }
     public required string Descricao { get; set; }
+
+    public bool Status { get; set; }
 }
