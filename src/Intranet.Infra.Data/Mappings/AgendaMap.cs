@@ -32,6 +32,6 @@ public class AgendaMap : IEntityTypeConfiguration<Agenda>
         .HasColumnType("varchar(250)");
 
         builder.Property(x => x.Status)
-        .HasColumnType("bit(1)");
+        .HasDefaultValue(true);
     }
 }

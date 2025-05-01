@@ -25,6 +25,7 @@ public class AgendaService : IAgendaService
             HoraFim = args.HoraFim,
             Local = args.Local,
             Descricao = args.Descricao,
+            Status = args.Status
          };
         _agendaRepository.AdicionarAgenda(agenda);
         var result = new ResultViewModel(await _agendaRepository.SaveChangesAsync());
@@ -45,7 +46,8 @@ public class AgendaService : IAgendaService
             HoraInicio = x.HoraInicio,
             HoraFim  = x.HoraFim,
             Local = x.Local,
-            Descricao = x.Descricao 
+            Descricao = x.Descricao,
+            Status = x.Status 
             });
         return new ResultViewModel(retornoModel);
     }

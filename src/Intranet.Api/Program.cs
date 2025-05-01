@@ -32,12 +32,15 @@ builder.Services.AddCors(
             builder
             .AllowAnyOrigin()
             .AllowAnyMethod()
-            .AllowAnyHeader();
+            .AllowAnyHeader()
+            .WithExposedHeaders("*");
         });
     }
 );
 
 var app = builder.Build();
+
+app.UseCors("cors");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
